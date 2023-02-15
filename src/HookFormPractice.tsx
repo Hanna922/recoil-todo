@@ -38,7 +38,7 @@ interface IForm {
   extraError?: string;
 }
 
-function TodoList() {
+function HookFormPractice() {
   const {
     register,
     handleSubmit,
@@ -81,9 +81,9 @@ function TodoList() {
             required: "wirte here",
             validate: {
               noHanna: (value) =>
-                value.includes("hanna") ? "no hannas allowed" : true,
+                !value.includes("hanna") || "no hanna allowed",
               noNayoung: (value) =>
-                value.includes("nayoung") ? "no nayoung allowed" : true,
+                !value.includes("nayoung") || "no nayoung allowed",
             },
           })}
           placeholder="First Name"
@@ -122,4 +122,4 @@ function TodoList() {
   );
 }
 
-export default TodoList;
+export default HookFormPractice;
