@@ -4,7 +4,7 @@
 
 이 프로젝트는 CRA + TypeScript 템플릿으로 제작되었습니다.
 
-참고 : https://github.com/walking-sunset/selection-task#api
+참고 : https://github.com/walking-sunset/selection-task
 
 ---
 
