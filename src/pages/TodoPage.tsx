@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import token from "../api/token";
 import { ACCESS_TOKEN_KEY } from "./../const";
+import { getTodo } from "./../api/todo";
 
 function TodoPage() {
   const navigate = useNavigate();
@@ -18,7 +19,17 @@ function TodoPage() {
       navigate("/signin");
     }
   }, []);
-  
+
+  const loadTodos = () => {
+    getTodo().then((response) => {
+      setTodos(response.data);
+    });
+  };
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
+
   return (
     <div>
       <h1>todo app</h1>

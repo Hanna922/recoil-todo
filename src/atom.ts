@@ -1,8 +1,10 @@
 import { atom } from "recoil";
 
 export interface ITodo {
-  text: string;
   id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
 }
 
 export const todoState = atom<ITodo[]>({
