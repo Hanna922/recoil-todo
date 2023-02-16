@@ -2,11 +2,23 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { todoState } from "../atom";
 import CreateTodo from "../components/CreateTodo";
 import Todo from "../components/Todo";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import token from "../api/token";
+import { ACCESS_TOKEN_KEY } from "./../const";
 
 function TodoPage() {
+  const navigate = useNavigate();
   const todos = useRecoilValue(todoState);
   const setTodos = useSetRecoilState(todoState);
   console.log(todos);
+
+  useEffect(() => {
+    if (!token.getToken(ACCESS_TOKEN_KEY)) {
+      navigate("/signin");
+    }
+  }, []);
+  
   return (
     <div>
       <h1>todo app</h1>
