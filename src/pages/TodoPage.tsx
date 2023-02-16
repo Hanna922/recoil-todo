@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import token from "../api/token";
 import { ACCESS_TOKEN_KEY } from "./../const";
-import { getTodo } from "./../api/todo";
+import { deleteTodo, getTodo } from "./../api/todo";
 
 function TodoPage() {
   const navigate = useNavigate();
@@ -30,13 +30,25 @@ function TodoPage() {
     loadTodos();
   }, []);
 
+  const onClickDelete = (id: number) => {
+    deleteTodo({ id }).then(() => {
+      loadTodos();
+    });
+  };
+
   return (
     <div>
       <h1>todo app</h1>
       <hr />
       <CreateTodo />
       {todos?.map((todo) => (
-        <Todo key={todo.id} {...todo} />
+        // <Todo key={todo.id} {...todo} />
+        <Todo
+          key={todo.id}
+          todo={todo}
+          loadTodos={loadTodos}
+          onClickDelete={onClickDelete}
+        />
       ))}
     </div>
   );
