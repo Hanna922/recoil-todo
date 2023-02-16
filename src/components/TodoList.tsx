@@ -1,7 +1,7 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Categories, categoryState, todoSelector } from "./../atoms";
-import CreateTodo from "./CreateTodo";
-import Todo from "./Todo";
+import { Categories, categoryState, todoSelector } from "../atomsPractice";
+import CreateTodoPractice from "./CreateTodoPractice";
+import TodoPractice from "./TodoPractice";
 
 function TodoList() {
   // const [todo, doing, done] = useRecoilValue(todoSelector);
@@ -20,7 +20,7 @@ function TodoList() {
         <option value={Categories.DOING}>Doing</option>
         <option value={Categories.DONE}>Done</option>
       </select>
-      <CreateTodo />
+      <CreateTodoPractice />
       {/* <h2>Todo</h2>
       <ul>
         {todo.map((todo) => (
@@ -43,7 +43,7 @@ function TodoList() {
       </ul>
       <hr /> */}
       {todos?.map((todo) => (
-        <Todo key={todo.id} {...todo} />
+        <TodoPractice key={todo.id} {...todo} />
       ))}
     </div>
   );
