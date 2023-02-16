@@ -5,7 +5,7 @@ import Todo from "../components/Todo";
 
 function TodoPage() {
   const todos = useRecoilValue(todoState);
-//   const setTodos = useSetRecoilState(todoState);
+  const setTodos = useSetRecoilState(todoState);
   console.log(todos);
   return (
     <div>

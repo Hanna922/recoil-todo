@@ -14,7 +14,6 @@ function SignInPage() {
   const navigate = useNavigate();
   const {
     register,
-    // handleSubmit,
     formState: { errors },
     watch,
   } = useForm<IForm>({
@@ -22,11 +21,6 @@ function SignInPage() {
       email: "@naver.com",
     },
   });
-  // const { email } = watch();
-  // const onValid = (data: IForm) => {
-  //   console.log(data);
-  //   console.log(watch);
-  // };
 
   const onSignIn = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -51,7 +45,6 @@ function SignInPage() {
     <div>
       <form
         style={{ display: "flex", flexDirection: "column" }}
-        // onSubmit={handleSubmit(onValid)}
         onSubmit={onSignIn}
       >
         <input

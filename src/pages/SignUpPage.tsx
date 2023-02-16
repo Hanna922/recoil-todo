@@ -14,7 +14,6 @@ function SignUpPage() {
   const navigate = useNavigate();
   const {
     register,
-    // handleSubmit,
     formState: { errors },
     watch,
   } = useForm<IForm>({
@@ -22,11 +21,6 @@ function SignUpPage() {
       email: "@naver.com",
     },
   });
-  // const { email } = watch();
-  // const onValid = (data: IForm) => {
-  //   console.log(data);
-  //   console.log(watch);
-  // };
 
   const onSignUp = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -46,12 +40,10 @@ function SignUpPage() {
     }
   }, []);
 
-  // => react-hook-form이 모든 validation을 마쳤을 때만 호출될 것
   return (
     <div>
       <form
         style={{ display: "flex", flexDirection: "column" }}
-        // onSubmit={handleSubmit(onValid)}
         onSubmit={onSignUp}
       >
         <input

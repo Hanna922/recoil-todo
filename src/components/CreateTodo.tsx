@@ -21,8 +21,9 @@ function CreateTodo() {
           required: "write a to do",
         })}
         placeholder="write a to do"
+        data-testid="new-todo-input"
       />
-      <button>add</button>
+      <button data-testid="new-todo-add-button">추가</button>
     </form>
   );
 }
