@@ -4,7 +4,7 @@ export interface ITodo {
   id: number;
   todo: string;
   isCompleted: boolean;
-  userId: number;
+  userId?: number;
 }
 
 export const todoState = atom<ITodo[]>({

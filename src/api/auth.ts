@@ -1,11 +1,11 @@
 import api from "./api";
 
-interface signParam {
+interface SignParam {
   email: string;
   password: string;
 }
 
-export const signUp = async ({ email, password }: signParam) => {
+export const signUp = async ({ email, password }: SignParam) => {
   return await api({
     method: "post",
     url: "/auth/signup",
@@ -16,7 +16,7 @@ export const signUp = async ({ email, password }: signParam) => {
   });
 };
 
-export const signIn = async ({ email, password }: signParam) => {
+export const signIn = async ({ email, password }: SignParam) => {
   return await api({
     method: "post",
     url: "/auth/signin",

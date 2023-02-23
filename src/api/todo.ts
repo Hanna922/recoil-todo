@@ -1,20 +1,20 @@
 import api from "./api";
 
-interface createTodoParam {
+interface CreateTodoParam {
   todo: string;
 }
 
-interface updateTodoParam {
+interface UpdateTodoParam {
   id: number;
   todo: string;
   isCompleted: boolean;
 }
 
-interface deleteTodoParam {
+interface DeleteTodoParam {
   id: number;
 }
 
-export const createTodo = async ({ todo }: createTodoParam) => {
+export const createTodo = async ({ todo }: CreateTodoParam) => {
   return await api({
     method: "post",
     url: "/todos",
@@ -35,7 +35,7 @@ export const updateTodo = async ({
   id,
   todo,
   isCompleted,
-}: updateTodoParam) => {
+}: UpdateTodoParam) => {
   return await api({
     method: "put",
     url: `/todos/${id}`,
@@ -46,7 +46,7 @@ export const updateTodo = async ({
   });
 };
 
-export const deleteTodo = async ({ id }: deleteTodoParam) => {
+export const deleteTodo = async ({ id }: DeleteTodoParam) => {
   return await api({
     method: "delete",
     url: `/todos/${id}`,

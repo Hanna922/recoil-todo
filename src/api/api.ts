@@ -12,4 +12,12 @@ const api = axios.create({
   },
 });
 
+// api.post('url', {
+
+// }).withToken()
+
+// api.get('url', {
+
+// })
+
 export default api;
