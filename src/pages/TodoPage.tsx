@@ -13,7 +13,6 @@ function TodoPage() {
   const navigate = useNavigate();
   const todos = useRecoilValue(todoState);
   const setTodos = useSetRecoilState(todoState);
-  console.log(todos);
 
   useEffect(() => {
     if (!token.getToken(ACCESS_TOKEN_KEY)) {
@@ -33,7 +32,9 @@ function TodoPage() {
 
   const onCheck = (checkTodo: ITodo) => {
     let { id, todo, isCompleted } = checkTodo;
+    console.log(isCompleted);
     isCompleted = !isCompleted;
+    // 서버에서 취급하는 isCompleted boolean 값과 반대인 상태
     updateTodo({ id, todo, isCompleted }).then(() => {
       loadTodos();
     });

@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { todoState } from "../atom";
 import { ITodo } from "../atom";
-import { useForm } from "react-hook-form";
 import { updateTodo } from "./../api/todo";
+import useInput from "./../hooks/useInput";
 
 interface ITodoProps {
   todo: ITodo;
@@ -12,31 +10,20 @@ interface ITodoProps {
   onClickDelete: (id: number) => void;
 }
 
-interface IUpdate {
-  id: number;
-  todo: string;
-  isCompleted: boolean;
-}
-
 function Todo({ todo, loadTodos, onCheck, onClickDelete }: ITodoProps) {
   const [isUpdate, setIsUpdate] = useState(false);
-  const todos = useRecoilValue(todoState);
-  const setTodos = useSetRecoilState(todoState);
-  const { register, handleSubmit, setValue, watch } = useForm<IUpdate>();
-  // console.log(watch("todo"));
-  //   const onUpdate = (event: React.FormEvent<HTMLFormElement>) => {
-  //     event.preventDefault();
-  //     setIsUpdate(false);
-  //   };
+  const [isEdit, setIsEdit] = useInput(todo);
 
-  const handleValid = ({ id, todo, isCompleted }: IUpdate) => {
-    // console.log(todo);
+  // update 구현 시 input에 원래 있던 todo value를 설정해주어야 하는데
+  // 이럴 경우 실시간으로 입력되는 값을 얻는 방법을 찾지 못함
+  // => update 기능의 경우 react hook form 대신 일반 코드로 작성
+
+  const editTodo = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsUpdate(false);
-    setTodos((prevTodos) => [
-      { todo: todo, id: Date.now(), isCompleted: isCompleted },
-      ...prevTodos,
-    ]);
 
+    let { id, todo, isCompleted } = isEdit;
+    // console.log(isCompleted);
     updateTodo({ id, todo, isCompleted }).then(() => {
       loadTodos();
     });
@@ -45,13 +32,18 @@ function Todo({ todo, loadTodos, onCheck, onClickDelete }: ITodoProps) {
   return (
     <li>
       {isUpdate ? (
-        <form onSubmit={handleSubmit(handleValid)}>
+        <form onSubmit={editTodo}>
           <label>
-            <input type="checkbox" />
             <input
-              {...register("todo")}
-              // value={todo.todo}
+              type="checkbox"
+              checked={todo.isCompleted}
               onChange={() => onCheck(todo)}
+            />
+            <input
+              name="todo"
+              // https://velog.io/@hyemison/%EB%A6%AC%EC%95%A1%ED%8A%B8-input-%EC%9E%85%EB%A0%A5-%EC%95%88-%EB%90%A8
+              value={isEdit.todo}
+              onChange={setIsEdit}
               data-testid="new-todo-input"
             />
           </label>
