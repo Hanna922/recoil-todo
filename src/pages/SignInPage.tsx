@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import token from "../api/token";
 import { ACCESS_TOKEN_KEY } from "./../const";
 import { useEffect } from "react";
+import "../style/css/Sign.css";
 
 interface IForm {
   email: string;
@@ -42,28 +43,32 @@ function SignInPage() {
   }, []);
 
   return (
-    <div>
+    <div className="wrapper">
       <form
         style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSignIn}
       >
-        <input
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value: /^[A-Za-z0-9._%+-]+@$/,
-              message: "Only emails allowed",
-            },
-          })}
-          placeholder="Email"
-        />
-        <span>{errors?.email?.message}</span>
-        <input
-          {...register("password", { required: "write here", minLength: 8 })}
-          placeholder="Password"
-        />
-        <span>{errors?.password?.message}</span>
-        <button>Add</button>
+        <div className="inputBox">
+          <input
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Za-z0-9._%+-]+@$/,
+                message: "Only emails allowed",
+              },
+            })}
+            placeholder="Email"
+          />
+        </div>
+        <div className="inputBox">
+          <span>{errors?.email?.message}</span>
+          <input
+            {...register("password", { required: "write here", minLength: 8 })}
+            placeholder="Password"
+          />
+          <span>{errors?.password?.message}</span>
+        </div>
+        <button className="check-button">Sign In</button>
       </form>
     </div>
   );

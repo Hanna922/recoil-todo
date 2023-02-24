@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import ToDoList from "./components/TodoList";
 import Router from "./Router";
+import "./style/css/App.css";
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -68,11 +68,11 @@ a {
 
 function App() {
   return (
-    <>
+    <div className="global-div">
       <GlobalStyle />
       <Router />
       {/* <ToDoList /> */}
-    </>
+    </div>
   );
 }
 

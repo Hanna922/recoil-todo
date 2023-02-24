@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import "../style/css/HomePage.css";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -6,9 +7,8 @@ function HomePage() {
     navigate("/todo");
   };
   return (
-    <div>
-      <h1>2023 원티드 프리온보딩</h1>
-      <h2>개인 연습 !</h2>
+    <div className="wrapper">
+      <h1 className="title">2023 원티드 프리온보딩 개인 연습 !-!</h1>
       <button onClick={startApp}>start</button>
     </div>
   );

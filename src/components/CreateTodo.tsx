@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { todoState } from "../atom";
 import { createTodo, getTodo } from "./../api/todo";
+// import "../style/css/TodoPage.css";
 
 interface ITodo {
   todo: string;
@@ -28,14 +29,16 @@ function CreateTodo() {
 
   return (
     <form onSubmit={handleSubmit(handleValid)}>
-      <input
-        {...register("todo", {
-          required: "write a to do",
-        })}
-        placeholder="write a to do"
-        data-testid="new-todo-input"
-      />
-      <button data-testid="new-todo-add-button">추가</button>
+      <div className="todo-inputBox">
+        <input
+          {...register("todo", {
+            required: "write a to do",
+          })}
+          placeholder="write a to do"
+          data-testid="new-todo-input"
+        />
+        <button data-testid="new-todo-add-button">추가</button>
+      </div>
     </form>
   );
 }

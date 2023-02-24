@@ -8,6 +8,7 @@ import token from "../api/token";
 import { ACCESS_TOKEN_KEY } from "./../const";
 import { getTodo, updateTodo, deleteTodo } from "./../api/todo";
 import { ITodo } from "./../atom";
+import "../style/css/TodoPage.css";
 
 function TodoPage() {
   const navigate = useNavigate();
@@ -47,8 +48,7 @@ function TodoPage() {
   };
 
   return (
-    <div>
-      <hr />
+    <div className="wrapper">
       <CreateTodo />
       {todos?.map((todo) => (
         // <Todo key={todo.id} {...todo} />

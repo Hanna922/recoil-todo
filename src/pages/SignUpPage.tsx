@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signUp } from "../api/auth";
 import token from "../api/token";
 import { ACCESS_TOKEN_KEY } from "./../const";
+import "../style/css/Sign.css";
 
 interface IForm {
   email: string;
@@ -41,28 +42,32 @@ function SignUpPage() {
   }, []);
 
   return (
-    <div>
+    <div className="wrapper">
       <form
         style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSignUp}
       >
-        <input
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value: /^[A-Za-z0-9._%+-]+@$/,
-              message: "Only emails allowed",
-            },
-          })}
-          placeholder="Email"
-        />
-        <span>{errors?.email?.message}</span>
-        <input
-          {...register("password", { required: "write here", minLength: 8 })}
-          placeholder="Password"
-        />
-        <span>{errors?.password?.message}</span>
-        <button>Add</button>
+        <div className="inputBox">
+          <input
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Za-z0-9._%+-]+@$/,
+                message: "Only emails allowed",
+              },
+            })}
+            placeholder="Email"
+          />
+          <span>{errors?.email?.message}</span>
+        </div>
+        <div className="inputBox">
+          <input
+            {...register("password", { required: "write here", minLength: 8 })}
+            placeholder="Password"
+          />
+          <span>{errors?.password?.message}</span>
+        </div>
+        <button className="check-button">Sign Up</button>
       </form>
     </div>
   );
