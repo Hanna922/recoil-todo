@@ -1,4 +1,5 @@
 import NavItem from "./NavItem";
+import "../style/css/Navigation.css";
 
 function Navigation() {
   const menu = [

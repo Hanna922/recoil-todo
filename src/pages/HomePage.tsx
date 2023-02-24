@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const startApp = () => {
     navigate("/todo");
   };

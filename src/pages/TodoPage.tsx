@@ -48,7 +48,6 @@ function TodoPage() {
 
   return (
     <div>
-      <h1>todo app</h1>
       <hr />
       <CreateTodo />
       {todos?.map((todo) => (

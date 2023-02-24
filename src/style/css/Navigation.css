@@ -1,0 +1,14 @@
+.navigation-wrapper {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  border: solid 2px;
+}
+.navigation-wrapper div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}/*# sourceMappingURL=Navigation.css.map */

@@ -14,5 +14,6 @@
 - React Router
 - Axios
 - Styled Components
+- Scss
 - Recoil
 - React-hook-form
