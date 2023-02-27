@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import TodoPage from "./pages/TodoPage";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 
 function Router() {
   return (

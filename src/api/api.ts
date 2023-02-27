@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ACCESS_TOKEN_KEY } from "./../const";
+import { ACCESS_TOKEN_KEY } from "../const/const";
 import token from "./token";
 
 const BASE_URL = "https://pre-onboarding-selection-task.shop";

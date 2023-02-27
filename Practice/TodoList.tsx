@@ -1,15 +1,18 @@
+import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Categories, categoryState, todoSelector } from "../atomsPractice";
 import CreateTodoPractice from "./CreateTodoPractice";
 import TodoPractice from "./TodoPractice";
+import { todoSelector, categoryState, Categories } from "./atomsPractice";
 
 function TodoList() {
   // const [todo, doing, done] = useRecoilValue(todoSelector);
   const todos = useRecoilValue(todoSelector);
   const [category, setCategory] = useRecoilState(categoryState);
+
   const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
     setCategory(event.currentTarget.value as Categories);
   };
+
   console.log(todos);
   return (
     <div>

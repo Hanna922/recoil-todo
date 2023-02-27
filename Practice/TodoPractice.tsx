@@ -1,4 +1,5 @@
-import { Categories, ITodo, todoState } from "../atomsPractice";
+import React from "react";
+import { Categories, ITodo, todoState } from "./atomsPractice";
 import { useSetRecoilState } from "recoil";
 
 function TodoPractice({ text, category, id }: ITodo) {

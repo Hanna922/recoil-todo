@@ -1,5 +1,7 @@
-import NavItem from "./NavItem";
-import "../style/css/Navigation.css";
+import "../css/Navigation.css";
+import React from "react";
+import NavItem from "../Navigation/NavItem";
+// import NavItem from "./NavItem";
 
 function Navigation() {
   const menu = [
@@ -13,11 +15,11 @@ function Navigation() {
     <nav className="navigation-wrapper">
       <div className="menu-list">
         {menu.map((data) => (
-          <NavItem key={data.address} data={data} />
+          <NavItem key={data.address} {...data} />
         ))}
       </div>
     </nav>
   );
 }
 
-export default Navigation;
+export default React.memo(Navigation);

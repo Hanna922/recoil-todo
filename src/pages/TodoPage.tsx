@@ -1,11 +1,11 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { todoState } from "../atom";
 import CreateTodo from "../components/CreateTodo";
-import Todo from "../components/Todo";
+import Todo from "../components/Todo/Todo";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import token from "../api/token";
-import { ACCESS_TOKEN_KEY } from "./../const";
+import { ACCESS_TOKEN_KEY } from "../const/const";
 import { getTodo, updateTodo, deleteTodo } from "./../api/todo";
 import { ITodo } from "./../atom";
 import "../style/css/TodoPage.css";
@@ -19,17 +19,17 @@ function TodoPage() {
     if (!token.getToken(ACCESS_TOKEN_KEY)) {
       navigate("/signin");
     }
-  }, []);
+  }, [navigate]);
 
-  const loadTodos = () => {
+  const loadTodos = useCallback(() => {
     getTodo().then((response) => {
       setTodos(response.data);
     });
-  };
+  }, [setTodos]);
 
   useEffect(() => {
     loadTodos();
-  }, []);
+  }, [loadTodos]);
 
   const onCheck = (checkTodo: ITodo) => {
     let { id, todo, isCompleted } = checkTodo;

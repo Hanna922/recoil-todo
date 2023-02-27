@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { ITodo } from "../atom";
-import { updateTodo } from "./../api/todo";
-import useInput from "./../hooks/useInput";
+import { ITodo } from "../../atom";
+import { updateTodo } from "../../api/todo";
+import useInput from "../../hooks/useInput";
+import React from "react";
+// 상대경로 => 절대경로
 
 interface ITodoProps {
   todo: ITodo;
@@ -22,7 +24,7 @@ function Todo({ todo, loadTodos, onCheck, onClickDelete }: ITodoProps) {
     event.preventDefault();
     setIsUpdate(false);
 
-    let { id, todo, isCompleted } = isEdit;
+    const { id, todo, isCompleted } = isEdit;
     // console.log(isCompleted);
     updateTodo({ id, todo, isCompleted }).then(() => {
       loadTodos();
@@ -80,4 +82,4 @@ function Todo({ todo, loadTodos, onCheck, onClickDelete }: ITodoProps) {
   );
 }
 
-export default Todo;
+export default React.memo(Todo);

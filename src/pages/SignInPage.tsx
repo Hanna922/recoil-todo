@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { signIn } from "../api/auth";
 import { useForm } from "react-hook-form";
 import token from "../api/token";
-import { ACCESS_TOKEN_KEY } from "./../const";
+import { ACCESS_TOKEN_KEY } from "../const/const";
 import { useEffect } from "react";
 import "../style/css/Sign.css";
 

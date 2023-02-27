@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../api/auth";
 import token from "../api/token";
-import { ACCESS_TOKEN_KEY } from "./../const";
+import { ACCESS_TOKEN_KEY } from "../const/const";
 import "../style/css/Sign.css";
 
 interface IForm {
