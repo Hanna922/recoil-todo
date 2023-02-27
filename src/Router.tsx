@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SignUpPage from "./pages/SignUpPage";
-import SignInPage from "./pages/SignInPage";
-import TodoPage from "./pages/TodoPage";
+import HomePage from "./pages/Home";
+import SignUpPage from "./pages/Sign/SignUp";
+import SignInPage from "./pages/Sign/SignIn";
+import TodoPage from "./pages/Todo";
 import Navigation from "./components/Navigation/Navigation";
 
 function Router() {

@@ -1,17 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { signIn } from "../api/auth";
-import { useForm } from "react-hook-form";
-import token from "../api/token";
-import { ACCESS_TOKEN_KEY } from "../const/const";
 import { useEffect } from "react";
-import "../style/css/Sign.css";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { signUp } from "../../../api/auth";
+import token from "../../../api/token";
+import { ACCESS_TOKEN_KEY } from "../../../const/const";
+import "../../css/Sign.css";
 
 interface IForm {
   email: string;
   password: string;
 }
 
-function SignInPage() {
+function SignUpPage() {
   const navigate = useNavigate();
   const {
     register,
@@ -23,13 +23,12 @@ function SignInPage() {
     },
   });
 
-  const onSignIn = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSignUp = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    signIn(watch())
+    signUp(watch())
       .then((response) => {
-        token.setToken(ACCESS_TOKEN_KEY, response.data.access_token);
-        navigate("/todo");
-        window.location.reload();
+        alert(response.statusText);
+        navigate("/signin");
       })
       .catch((error) => {
         alert(error.response.data.log || error.log);
@@ -46,7 +45,7 @@ function SignInPage() {
     <div className="wrapper">
       <form
         style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={onSignIn}
+        onSubmit={onSignUp}
       >
         <div className="inputBox">
           <input
@@ -59,19 +58,19 @@ function SignInPage() {
             })}
             placeholder="Email"
           />
+          <span>{errors?.email?.message}</span>
         </div>
         <div className="inputBox">
-          <span>{errors?.email?.message}</span>
           <input
             {...register("password", { required: "write here", minLength: 8 })}
             placeholder="Password"
           />
           <span>{errors?.password?.message}</span>
         </div>
-        <button className="check-button">Sign In</button>
+        <button className="check-button">Sign Up</button>
       </form>
     </div>
   );
 }
 
-export default SignInPage;
+export default SignUpPage;

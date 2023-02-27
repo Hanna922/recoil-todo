@@ -1,14 +1,14 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { todoState } from "../atom";
-import CreateTodo from "../components/CreateTodo";
-import Todo from "../components/Todo/Todo";
+import { todoState } from "../../atom";
+import CreateTodo from "../../components/CreateTodo";
+import Todo from "../../components/Todo/Todo";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect } from "react";
-import token from "../api/token";
-import { ACCESS_TOKEN_KEY } from "../const/const";
-import { getTodo, updateTodo, deleteTodo } from "./../api/todo";
-import { ITodo } from "./../atom";
-import "../style/css/TodoPage.css";
+import token from "../../api/token";
+import { ACCESS_TOKEN_KEY } from "../../const/const";
+import { getTodo, updateTodo, deleteTodo } from "../../api/todo";
+import { ITodo } from "../../atom";
+import "../css/TodoPage.css";
 
 function TodoPage() {
   const navigate = useNavigate();
